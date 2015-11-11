@@ -3,11 +3,8 @@
 // Prompt user selection of fatback type
   // choices are limited to 'duple meter' and 'triple meter'
 
-var fatBackMin = 1;
-var fatBackMax = 17;
-var timePatternMin = 1;
-var timePatternMax = 23;
-var songMin = 1;
+var fatBackMax = 16;
+var timePatternMax = 25;
 var songMax = 91;
 
 function randomNumber (minNum, maxNum) {
@@ -30,19 +27,19 @@ function updateAudio(sourceUrl){
 }
 
 var generateFBRandoms = function() {
-  var fatBackA = randomNumber(fatBackMin, fatBackMax);
-  var fatBackB = randomNumber(fatBackMin, fatBackMax);
-  var fatBackC = randomNumber(fatBackMin, fatBackMax);
+  var fatBackA = randomNumber(1, fatBackMax);
+  var fatBackB = randomNumber(1, fatBackMax);
+  var fatBackC = randomNumber(1, fatBackMax);
   $('.result-a').text(fatBackA);
   $('.result-b').text(fatBackB);
   $('.result-c').text(fatBackC);
 }
 var generateTimeAPattern = function() {
-  var sectionTime = randomNumber(timePatternMin, timePatternMax);
+  var sectionTime = randomNumber(1, timePatternMax);
   $('.recommended-pattern').text(sectionTime);
 }
 var songRecommendation = function() {
-  var randomSong = randomNumber(timePatternMin, timePatternMax);
+  var randomSong = randomNumber(1, songMax);
   updateAudio(randomSong);
   $('.song-number').text(randomSong);
 }
