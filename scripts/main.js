@@ -4,20 +4,21 @@
   // choices are limited to 'duple meter' and 'triple meter'
 
 var fatBackMin = 1;
-var fatBackMax = 16;
+var fatBackMax = 17;
 var timePatternMin = 1;
-var timePatternMax = 22;
+var timePatternMax = 23;
 var songMin = 1;
-var songMax = 90;
+var songMax = 91;
 
 function randomNumber (minNum, maxNum) {
   return Math.floor(Math.random() * (maxNum - 1) + minNum)
 }
 
 function updateAudio(sourceUrl){
-  var fastOrSlow = randomNumber(1,2);
+  var fastOrSlow = randomNumber(1,3);
+  console.log(fastOrSlow);
   var setSpeed;
-  if (fastOrSlow = 1){
+  if (fastOrSlow == 1){
     setSpeed = '-fast.mp3';
   } else {
     setSpeed = '-slow.mp3'
