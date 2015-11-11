@@ -8,10 +8,24 @@ var fatBackMax = 16;
 var timePatternMin = 1;
 var timePatternMax = 22;
 var songMin = 1;
-var songMax = 88;
+var songMax = 90;
 
 function randomNumber (minNum, maxNum) {
   return Math.floor(Math.random() * (maxNum - 1) + minNum)
+}
+
+function updateAudio(sourceUrl){
+  var fastOrSlow = randomNumber(1,2);
+  var setSpeed;
+  if (fastOrSlow = 1){
+    setSpeed = '-fast.mp3';
+  } else {
+    setSpeed = '-slow.mp3'
+  }
+  var audio = $('.audio-player');
+  $('.audio-player').attr("src", 'audio/' + sourceUrl + setSpeed); 
+  audio[0].pause();
+  audio[0].load();
 }
 
 var generateFBRandoms = function() {
@@ -28,13 +42,11 @@ var generateTimeAPattern = function() {
 }
 var songRecommendation = function() {
   var randomSong = randomNumber(timePatternMin, timePatternMax);
+  updateAudio(randomSong);
   $('.song-number').text(randomSong);
 }
 var clearFBSequence = function() {
-  $('.timing-pattern').removeClass("hidden");
-  $('.fb-sequence').removeClass("hidden");
-  $('.song-recommendation').removeClass("hidden");
-  $('.description').removeClass("hidden");
+  $('.timing-pattern, .fb-sequence, .song-recommendation, .description').removeClass("hidden");
 }
 var displayFBSequence = function(){
   clearFBSequence();
