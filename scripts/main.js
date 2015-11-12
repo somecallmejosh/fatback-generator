@@ -29,7 +29,7 @@ function updateAudio(sourceUrl){
   } else {
     setSpeed = '-slow.mp3'
   }
-  $audioPlayer.setAttribute("src", 'audio/' + sourceUrl + setSpeed); 
+  $audioPlayer.setAttribute('src', 'audio/' + sourceUrl + setSpeed); 
   $audioPlayer.pause();
   $audioPlayer.load();
 }
@@ -63,10 +63,10 @@ var songRecommendation = function() {
 }
 
 var clearFBSequence = function() {
-  $timingPattern.classList.remove("hidden");
-  $fbSequence.classList.remove("hidden");
-  $songRecommendation.classList.remove("hidden");
-  $description.classList.remove("hidden");
+  $timingPattern.classList.remove('hidden');
+  $fbSequence.classList.remove('hidden');
+  $songRecommendation.classList.remove('hidden');
+  $description.classList.remove('hidden');
 }
 
 var displayFBSequence = function(){
@@ -76,6 +76,6 @@ var displayFBSequence = function(){
   songRecommendation();
 }
 
-$button.addEventListener("click", displayFBSequence);
+$button.addEventListener('click', displayFBSequence);
 
   
