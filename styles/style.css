@@ -12,7 +12,7 @@ html, body {
 .container {
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 h1 {
@@ -54,11 +54,11 @@ button {
 .fb-pattern:last-child {
   border-right: none;
 }
-.label {
+[class*="result"] {
   font-size: 2rem;
   font-family: 'Alfa Slab One', cursive;
 }
-.result {
+.label {
   font-size: 1rem;
 }
 
