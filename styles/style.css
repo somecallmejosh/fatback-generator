@@ -88,7 +88,12 @@ button {
   font-family: 'Alfa Slab One', cursive;
   font-size: 1.5rem;
 }
-
+.card small {
+  font-family: 'Lato', sans-serif;
+  font-size: .8rem;
+  display: block;
+  line-height: 1rem;
+}
 .song-recommendation .card {
   -webkit-border-bottom-right-radius: 4px;
   -webkit-border-bottom-left-radius: 4px;

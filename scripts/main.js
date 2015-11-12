@@ -9,7 +9,6 @@ var songMax = 91;
 var $audioPlayer = document.querySelector('.audio-player');
 var $songNumber = document.querySelector('.song-number');
 var $recommendedPattern = document.querySelector('.recommended-pattern');
-var $recommendedPatternText = document.querySelector('.recommended-pattern-text');
 var $timingPattern = document.querySelector('.timing-pattern');
 var $fbSequence = document.querySelector('.fb-sequence');
 var $songRecommendation = document.querySelector('.song-recommendation');
@@ -53,7 +52,6 @@ var generateFBRandoms = function() {
 var generateTimeAPattern = function() {
   var sectionTime = randomNumber(timePatternMax);
   $recommendedPattern.textContent = sectionTime;
-  $recommendedPatternText.textContent = sectionTime;
 }
 
 var songRecommendation = function() {
