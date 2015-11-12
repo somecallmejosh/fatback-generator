@@ -4,25 +4,24 @@
   // choices are limited to 'duple meter' and 'triple meter'
 
 // Set Constants
-var timePatternMax = 25;
-var songMax = 91;
-var $audioPlayer = document.querySelector('.audio-player');
-var $songNumber = document.querySelector('.song-number');
-var $recommendedPattern = document.querySelector('.recommended-pattern');
-var $timingPattern = document.querySelector('.timing-pattern');
-var $fbSequence = document.querySelector('.fb-sequence');
-var $songRecommendation = document.querySelector('.song-recommendation');
-var $description = document.querySelector('.description');
-var $button = document.querySelector('button');
+var timePatternMax = 25,
+    songMax = 91;
+var $audioPlayer = document.querySelector('.audio-player'),
+    $songNumber = document.querySelector('.song-number'),
+    $recommendedPattern = document.querySelector('.recommended-pattern'),
+    $timingPattern = document.querySelector('.timing-pattern'),
+    $fbSequence = document.querySelector('.fb-sequence'),
+    $songRecommendation = document.querySelector('.song-recommendation'),
+    $description = document.querySelector('.description'),
+    $button = document.querySelector('button');
 
 function randomNumber(maxNum) {
   return Math.floor(Math.random() * (maxNum - 1) + 1)
 }
 
 function updateAudio(sourceUrl){
-  var fastOrSlow = randomNumber(3);
-  console.log(fastOrSlow);
-  var setSpeed;
+  var fastOrSlow = randomNumber(3),
+      setSpeed;
   if (fastOrSlow == 1){
     setSpeed = '-fast.mp3';
   } else {
@@ -34,15 +33,14 @@ function updateAudio(sourceUrl){
 }
 
 var generateFBRandoms = function() {
-  var fatBackMax = 16;
-  var $resultA = document.querySelector('.result-a'),
+  var fatBackMax = 16,
+      $resultA = document.querySelector('.result-a'),
       $resultA2 = document.querySelector('.result-a2'),
       $resultB = document.querySelector('.result-b'),
-      $resultC = document.querySelector('.result-c');
-
-  var fatBackA = randomNumber(fatBackMax);
-  var fatBackB = randomNumber(fatBackMax);
-  var fatBackC = randomNumber(fatBackMax);
+      $resultC = document.querySelector('.result-c'),
+      fatBackA = randomNumber(fatBackMax),
+      fatBackB = randomNumber(fatBackMax),
+      fatBackC = randomNumber(fatBackMax);
   $resultA.textContent = fatBackA;
   $resultA2.textContent = fatBackA;
   $resultB.textContent = fatBackB;
