@@ -11,7 +11,16 @@
 
 <div class="container">
   <h1>Fatback Generator</h1>
-  <button>Generate Pattern</button>
+  <div class="action">
+    <button>Generate Pattern</button>
+    <div class="select-area">
+      <select name="skill-level" id="sill-level" class="skill-level">
+        <option value="basic" selected="selected">Basic</option>
+        <option value="advanced">Advanced</option>
+      </select>
+    </div>
+  </div>
+  
   <div class="timing-pattern hidden">
     <div class="card">
       Cymbal pattern #<strong class="recommended-pattern"></strong>
@@ -20,8 +29,52 @@
   <div class="fb-sequence hidden">
     <div class="fb-pattern"><div class="result-a"></div><div class="label">―A―</div></div>
     <div class="fb-pattern"><div class="result-b"></div><div class="label">―B―</div></div>
-    <div class="fb-pattern"><div class="result-a2"></div><div class="label">―A―</div></div>
+    <div class="fb-pattern"><div class="result-a"></div><div class="label">―A―</div></div>
     <div class="fb-pattern"><div class="result-c"></div><div class="label">―C―</div></div>
+  </div>
+  <div class="notation hidden">
+    <div class="fb-rhythms">
+      <div class="patterns cymbal">
+        <div class="section section-1">
+          <img src="images/cymbal-patterns/2.png" class="cymbal" height="141" width="300" alt="">
+          <img src="images/cymbal-patterns/2.png" class="cymbal"  height="141" width="300" alt="">
+        </div>
+        <div class="section section-2">
+          <img src="images/cymbal-patterns/2.png" class="cymbal"  height="141" width="300" alt="">
+          <img src="images/cymbal-patterns/2.png" class="cymbal"  height="141" width="300" alt="">
+        </div>
+        <div class="section section-3">
+          <img src="images/cymbal-patterns/2.png" class="cymbal"  height="141" width="300" alt="">
+          <img src="images/cymbal-patterns/2.png" class="cymbal"  height="141" width="300" alt="">
+        </div>
+        <div class="section section-4">
+          <img src="images/cymbal-patterns/2.png" class="cymbal"  height="141" width="300" alt="">
+          <img src="images/cymbal-patterns/2.png" class="cymbal"  height="141" width="300" alt="">
+        </div>
+      </div>
+      <div class="patterns fatbacks">
+        <div class="section section-1">
+          <!-- A -->
+          <img src="images/fb1-3/10.png" class="pattern-a" height="205" width="300" alt="">
+          <img src="images/fb2-4/1.png" class="snare snare-a" height="205" width="300" alt="">
+        </div>
+        <div class="section section-2">
+          <!-- B -->
+          <img src="images/fb1-3/2.png" class="pattern-b" height="205" width="300" alt="">
+          <img src="images/fb2-4/1.png" class="snare snare-b" height="205" width="300" alt="">
+        </div>
+        <div class="section section-3">
+          <!-- A -->
+          <img src="images/fb1-3/10.png" class="pattern-a" height="205" width="300" alt="">
+          <img src="images/fb2-4/1.png"  class="snare snare-a" height="205" width="300" alt="">
+        </div>
+        <div class="section section-4">
+          <!-- C -->
+          <img src="images/fb1-3/12.png" class="pattern-c" height="205" width="300" alt="">
+          <img src="images/fb2-4/1.png" class="snare snare-c" height="205" width="300" alt="">
+        </div>
+      </div>
+    </div>
   </div>
   <div class="song-recommendation hidden">
     <div class="card">
@@ -32,6 +85,8 @@
     </div>
   </div>
   <div class="description hidden">
+    <p><strong>Basic</strong> - Quarter notes on 2 and 4.<br><strong>Advance</strong> - hybrid patterns on beats two and four.</p>
+    <p>Cymbal Patterns: <strong>x</strong> = hihat with foot, <strong>o</strong> = open hihat or accent on bell of ride, <strong>></strong> = accented cymbal</p>
     <p>Cymbal and fatback patterns are from <a href="http://www.amazon.com/Time-Functioning-Patterns-Book-CD/dp/0769234771/ref=sr_1_1?ie=UTF8&qid=1447286821&sr=8-1&keywords=Gary+Chaffee" target="_blank">Time Functioning Patters</a> by Gary Chaffee. Music is from Tommy Igoe's Groove Essentials <a href="http://www.amazon.com/Groove-Essentials-Play-Along-Complete-Encyclopedia/dp/1423406788/ref=sr_1_1?ie=UTF8&qid=1447286628&sr=8-1&keywords=Groove+Essentials" target="_blank">One</a> or <a href="http://www.amazon.com/Firth-Presents-Groove-Essentials-Tommy/dp/1423464451/ref=sr_1_4?ie=UTF8&qid=1447286628&sr=8-4&keywords=Groove+Essentials" target="_blank">Two</a> <strong></strong>.</p>
   </div>
 </div>

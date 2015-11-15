@@ -13,6 +13,7 @@ var $audioPlayer = document.querySelector('.audio-player'),
     $fbSequence = document.querySelector('.fb-sequence'),
     $songRecommendation = document.querySelector('.song-recommendation'),
     $description = document.querySelector('.description'),
+    $notation = document.querySelector('.notation'),
     $button = document.querySelector('button');
 
 function randomNumber(maxNum) {
@@ -32,24 +33,75 @@ function updateAudio(sourceUrl){
   $audioPlayer.load();
 }
 
+function getSkillLevel() {
+  var $selectOption = document.querySelector('#sill-level');
+  var userSelection = $selectOption.options[$selectOption.selectedIndex].value;
+  return userSelection;
+}
+
 var generateFBRandoms = function() {
+  getSkillLevel();
   var fatBackMax = 16,
-      $resultA = document.querySelector('.result-a'),
-      $resultA2 = document.querySelector('.result-a2'),
+      snareMax = 9,
+      $resultA = document.querySelectorAll('.result-a'),
       $resultB = document.querySelector('.result-b'),
       $resultC = document.querySelector('.result-c'),
-      fatBackA = randomNumber(fatBackMax),
-      fatBackB = randomNumber(fatBackMax),
-      fatBackC = randomNumber(fatBackMax);
-  $resultA.textContent = fatBackA;
-  $resultA2.textContent = fatBackA;
-  $resultB.textContent = fatBackB;
-  $resultC.textContent = fatBackC;
+      fatBackRandomA = randomNumber(fatBackMax),
+      fatBackRandomB = randomNumber(fatBackMax),
+      fatBackRandomC = randomNumber(fatBackMax);
+      snareRandomA = randomNumber(snareMax);
+      snareRandomB = randomNumber(snareMax);
+      snareRandomC = randomNumber(snareMax);
+      $patternA = document.querySelectorAll('.pattern-a');
+      $patternB = document.querySelectorAll('.pattern-b');
+      $patternC = document.querySelectorAll('.pattern-c');
+      $snare  = document.querySelectorAll('.snare');
+      $snareA  = document.querySelectorAll('.snare-a');
+      $snareB  = document.querySelectorAll('.snare-b');
+      $snareC =  document.querySelectorAll('.snare-c');
+  for(var i=0; i < $resultA.length; i++) {
+      $resultA[i].textContent =  fatBackRandomA;
+  }
+  $resultB.textContent = fatBackRandomB;
+  $resultC.textContent = fatBackRandomC;
+  for(var i=0; i < $patternA.length; i++) {
+      $patternA[i].setAttribute('src', 'images/fb1-3/' + fatBackRandomA + ".png");
+  }
+  for(var i=0; i < $patternB.length; i++) {
+      $patternB[i].setAttribute('src', 'images/fb1-3/' + fatBackRandomB + ".png");
+  }
+  for(var i=0; i < $patternC.length; i++) {
+      $patternC[i].setAttribute('src', 'images/fb1-3/' + fatBackRandomC + ".png");
+  }
+
+  if(getSkillLevel() == "basic") {
+    console.log("Skill Level is Basic");
+    for(var i=0; i < $snare.length; i++) {
+        $snare[i].setAttribute('src', 'images/fb2-4/1.png');
+    }
+  } else {
+    for(var i=0; i < $snareA.length; i++) {
+        $snareA[i].setAttribute('src', 'images/fb2-4/' + snareRandomA + ".png");
+    }
+    for(var i=0; i < $snareB.length; i++) {
+        $snareB[i].setAttribute('src', 'images/fb2-4/' + snareRandomB + ".png");
+    }
+    for(var i=0; i < $snareC.length; i++) {
+        $snareC[i].setAttribute('src', 'images/fb2-4/' + snareRandomC + ".png");
+    } 
+  }
+
+
+  
 }
 
 var generateTimeAPattern = function() {
   var sectionTime = randomNumber(timePatternMax);
+  $cymbalPattern = document.querySelectorAll('.cymbal');
   $recommendedPattern.textContent = sectionTime;
+  for (var i=0; i < $cymbalPattern.length; i++) {
+      $cymbalPattern[i].setAttribute('src', 'images/cymbal-patterns/' + sectionTime + ".png");
+  }
 }
 
 var songRecommendation = function() {
@@ -63,6 +115,7 @@ var clearFBSequence = function() {
   $fbSequence.classList.remove('hidden');
   $songRecommendation.classList.remove('hidden');
   $description.classList.remove('hidden');
+  $notation.classList.remove('hidden');
 }
 
 var displayFBSequence = function(){
@@ -73,5 +126,6 @@ var displayFBSequence = function(){
 }
 
 $button.addEventListener('click', displayFBSequence);
+//$button.addEventListener('click', getSkillLevel);
 
   
