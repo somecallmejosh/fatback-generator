@@ -31,7 +31,7 @@ Groove essentials is another fantastic resource I use in my practice sessions. T
 ## TODO
 - [x] Add ability to include hybrid grooves (adding the second section of permutations from Chaffe's fatback patterns)
 - [x] Create images for each fatback and cymbal pattern, and construct them visually so the user can see the pattern in the app, rather than needing to refer to the book.
-- [ ] Allow user to select basic or advanced (inludes second section of permutations) groove construction.
+- [x] Allow user to select basic or advanced (inludes second section of permutations) groove construction.
 
 ## Would Be Awesome To Have
 
