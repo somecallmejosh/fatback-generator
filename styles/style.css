@@ -67,6 +67,7 @@ button {
   background-color: #333;
   color: white;
   border: none;
+  -webkit-appearance: none;
 }
 
 .timing-pattern {
