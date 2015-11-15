@@ -30,11 +30,11 @@ Groove essentials is another fantastic resource I use in my practice sessions. T
 
 ## TODO
 
-- [] Add ability to include hybrid grooves (adding the second section of permutations from Chaffe's fatback patterns)
-- [] Allow user to select basic or advanced (inludes second section of permutations) groove construction.
-- [] Create images for each fatback and cymbal pattern, and construct them visually so the user can see the pattern in the app, rather than needing to refer to the book.
+- [x] Add ability to include hybrid grooves (adding the second section of permutations from Chaffe's fatback patterns)
+- [ ] Allow user to select basic or advanced (inludes second section of permutations) groove construction.
+- [x] Create images for each fatback and cymbal pattern, and construct them visually so the user can see the pattern in the app, rather than needing to refer to the book.
 
 ## Would Be Awesome To Have
 
-- [] [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) groove construction on the fly so the user can hear the constructed rhythms in addition to seeing the constructed patterns mentioned in the TODO above.
+- [ ] [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) groove construction on the fly so the user can hear the constructed rhythms in addition to seeing the constructed patterns mentioned in the TODO above.
   - Check out [Howler.js](https://github.com/goldfire/howler.js/)
