@@ -1,19 +1,10 @@
-// Generate a random groove and apply a random song to layer the groove over
-
-// Prompt user selection of fatback type
-  // choices are limited to 'duple meter' and 'triple meter'
-
-// Set Constants
 var timePatternMax = 25,
     $songNumber = document.querySelector('.song-number'),
     $recommendedPattern = document.querySelector('.recommended-pattern'),
-    $timingPattern = document.querySelector('.timing-pattern'),
     $fbSequence = document.querySelector('.fb-sequence'),
-    $songRecommendation = document.querySelector('.song-recommendation'),
-    $description = document.querySelector('.description'),
-    $notation = document.querySelector('.notation'),
     $button = document.querySelector('button'),
     $videoPlayer = document.querySelector('.video');
+    $template = document.querySelector('.hidden');
 
 function randomNumber(maxNum) {
   return Math.floor(Math.random() * (maxNum - 1) + 1)
@@ -21,7 +12,7 @@ function randomNumber(maxNum) {
 
 function updateAudio(){
   var request = new XMLHttpRequest(),
-      endPoint = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLidCjvFoClTfullv1y7ORSE7gCxvhzNGj&key=AIzaSyBIM5spu4yHSUrBN_IqhCEq4_5MvudG5Ac";
+      endPoint = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLidCjvFoClTfullv1y7ORSE7gCxvhzNGj&key=AIzaSyBIM5spu4yHSUrBN_IqhCEq4_5MvudG5Ac';
   request.open('GET', endPoint, true);
   request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
@@ -30,11 +21,11 @@ function updateAudio(){
       var randomVideo = data.items[randomNumber(videoMax)].snippet.resourceId.videoId;
       $videoPlayer.setAttribute('src', 'https://www.youtube.com/embed/' + randomVideo);
     } else {
-      console.log("Nothing to show here.");
+      console.log('Nothing to show here.');
     }
   };
   request.onerror = function() {
-    console.log("There was an error of sorts.");
+    console.log('There was an error of sorts.');
   };
   request.send();
 }
@@ -99,7 +90,6 @@ var generateFBRandoms = function() {
         $snareC[i].setAttribute('src', 'images/fb2-4/' + snareRandomC + ".png");
     } 
   }
-  // End Function
 }
 
 var generateTimeAPattern = function() {
@@ -111,16 +101,8 @@ var generateTimeAPattern = function() {
   }
 }
 
-var clearFBSequence = function() {
-  $timingPattern.classList.remove('hidden');
-  $fbSequence.classList.remove('hidden');
-  $songRecommendation.classList.remove('hidden');
-  $description.classList.remove('hidden');
-  $notation.classList.remove('hidden');
-}
-
 var displayFBSequence = function(){
-  clearFBSequence();
+  $template.classList.remove('hidden');
   generateTimeAPattern();
   generateFBRandoms();
   updateAudio();
