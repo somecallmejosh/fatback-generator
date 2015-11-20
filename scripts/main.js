@@ -20,8 +20,6 @@ function randomNumber(maxNum) {
 }
 
 function updateAudio(){
-  // var fastOrSlow = randomNumber(3),
-  //     setSpeed;
   var request = new XMLHttpRequest(),
       endPoint = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLidCjvFoClTfullv1y7ORSE7gCxvhzNGj&key=AIzaSyBIM5spu4yHSUrBN_IqhCEq4_5MvudG5Ac";
   request.open('GET', endPoint, true);
@@ -113,12 +111,6 @@ var generateTimeAPattern = function() {
   }
 }
 
-// var songRecommendation = function() {
-//   var randomSong = randomNumber(songMax);
-//   updateAudio(randomSong);
-//   $songNumber.textContent = randomSong;
-// }
-
 var clearFBSequence = function() {
   $timingPattern.classList.remove('hidden');
   $fbSequence.classList.remove('hidden');
@@ -132,10 +124,9 @@ var displayFBSequence = function(){
   generateTimeAPattern();
   generateFBRandoms();
   updateAudio();
-  //songRecommendation();
 }
 
 $button.addEventListener('click', displayFBSequence);
-//$button.addEventListener('click', getSkillLevel);
+$button.addEventListener('click', getSkillLevel);
 
   
