@@ -5,8 +5,6 @@
 
 // Set Constants
 var timePatternMax = 25,
-    songMax = 91;
-var $audioPlayer = document.querySelector('.audio-player'),
     $songNumber = document.querySelector('.song-number'),
     $recommendedPattern = document.querySelector('.recommended-pattern'),
     $timingPattern = document.querySelector('.timing-pattern'),
@@ -14,23 +12,33 @@ var $audioPlayer = document.querySelector('.audio-player'),
     $songRecommendation = document.querySelector('.song-recommendation'),
     $description = document.querySelector('.description'),
     $notation = document.querySelector('.notation'),
-    $button = document.querySelector('button');
+    $button = document.querySelector('button'),
+    $videoPlayer = document.querySelector('.video');
 
 function randomNumber(maxNum) {
   return Math.floor(Math.random() * (maxNum - 1) + 1)
 }
 
-function updateAudio(sourceUrl){
-  var fastOrSlow = randomNumber(3),
-      setSpeed;
-  if (fastOrSlow == 1){
-    setSpeed = '-fast.mp3';
-  } else {
-    setSpeed = '-slow.mp3'
-  }
-  $audioPlayer.setAttribute('src', 'audio/' + sourceUrl + setSpeed); 
-  $audioPlayer.pause();
-  $audioPlayer.load();
+function updateAudio(){
+  // var fastOrSlow = randomNumber(3),
+  //     setSpeed;
+  var request = new XMLHttpRequest(),
+      endPoint = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLidCjvFoClTfullv1y7ORSE7gCxvhzNGj&key=AIzaSyBIM5spu4yHSUrBN_IqhCEq4_5MvudG5Ac";
+  request.open('GET', endPoint, true);
+  request.onload = function() {
+    if (request.status >= 200 && request.status < 400) {
+      var data = JSON.parse(request.responseText);
+      var videoMax = data.items.length;
+      var randomVideo = data.items[randomNumber(videoMax)].snippet.resourceId.videoId;
+      $videoPlayer.setAttribute('src', 'https://www.youtube.com/embed/' + randomVideo);
+    } else {
+      console.log("Nothing to show here.");
+    }
+  };
+  request.onerror = function() {
+    console.log("There was an error of sorts.");
+  };
+  request.send();
 }
 
 function getSkillLevel() {
@@ -46,24 +54,26 @@ var generateFBRandoms = function() {
       $resultA = document.querySelectorAll('.result-a'),
       $resultB = document.querySelector('.result-b'),
       $resultC = document.querySelector('.result-c'),
+      $patternA = document.querySelectorAll('.pattern-a'),
+      $patternB = document.querySelectorAll('.pattern-b'),
+      $patternC = document.querySelectorAll('.pattern-c'),
+      $snare  = document.querySelectorAll('.snare'),
+      $snareA  = document.querySelectorAll('.snare-a'),
+      $snareB  = document.querySelectorAll('.snare-b'),
+      $snareC =  document.querySelectorAll('.snare-c'),
       fatBackRandomA = randomNumber(fatBackMax),
       fatBackRandomB = randomNumber(fatBackMax),
-      fatBackRandomC = randomNumber(fatBackMax);
-      snareRandomA = randomNumber(snareMax);
-      snareRandomB = randomNumber(snareMax);
+      fatBackRandomC = randomNumber(fatBackMax),
+      snareRandomA = randomNumber(snareMax),
+      snareRandomB = randomNumber(snareMax),
       snareRandomC = randomNumber(snareMax);
-      $patternA = document.querySelectorAll('.pattern-a');
-      $patternB = document.querySelectorAll('.pattern-b');
-      $patternC = document.querySelectorAll('.pattern-c');
-      $snare  = document.querySelectorAll('.snare');
-      $snareA  = document.querySelectorAll('.snare-a');
-      $snareB  = document.querySelectorAll('.snare-b');
-      $snareC =  document.querySelectorAll('.snare-c');
+
   for(var i=0; i < $resultA.length; i++) {
       $resultA[i].textContent =  fatBackRandomA;
   }
   $resultB.textContent = fatBackRandomB;
   $resultC.textContent = fatBackRandomC;
+  // Could be DRY'd up
   for(var i=0; i < $patternA.length; i++) {
       $patternA[i].setAttribute('src', 'images/fb1-3/' + fatBackRandomA + ".png");
   }
@@ -80,6 +90,7 @@ var generateFBRandoms = function() {
         $snare[i].setAttribute('src', 'images/fb2-4/1.png');
     }
   } else {
+    // Could be DRY'd up
     for(var i=0; i < $snareA.length; i++) {
         $snareA[i].setAttribute('src', 'images/fb2-4/' + snareRandomA + ".png");
     }
@@ -90,9 +101,7 @@ var generateFBRandoms = function() {
         $snareC[i].setAttribute('src', 'images/fb2-4/' + snareRandomC + ".png");
     } 
   }
-
-
-  
+  // End Function
 }
 
 var generateTimeAPattern = function() {
@@ -104,11 +113,11 @@ var generateTimeAPattern = function() {
   }
 }
 
-var songRecommendation = function() {
-  var randomSong = randomNumber(songMax);
-  updateAudio(randomSong);
-  $songNumber.textContent = randomSong;
-}
+// var songRecommendation = function() {
+//   var randomSong = randomNumber(songMax);
+//   updateAudio(randomSong);
+//   $songNumber.textContent = randomSong;
+// }
 
 var clearFBSequence = function() {
   $timingPattern.classList.remove('hidden');
@@ -122,7 +131,8 @@ var displayFBSequence = function(){
   clearFBSequence();
   generateTimeAPattern();
   generateFBRandoms();
-  songRecommendation();
+  updateAudio();
+  //songRecommendation();
 }
 
 $button.addEventListener('click', displayFBSequence);
