@@ -3,6 +3,7 @@ var timePatternMax = 25,
     $recommendedPattern = document.querySelector('.recommended-pattern'),
     $fbSequence = document.querySelector('.fb-sequence'),
     $button = document.querySelector('button'),
+    $intro = document.querySelector('.intro'),
     $videoPlayer = document.querySelector('.video');
     $template = document.querySelector('.hidden');
 
@@ -103,6 +104,7 @@ var generateTimeAPattern = function() {
 
 var displayFBSequence = function(){
   $template.classList.remove('hidden');
+  $intro.classList.add('hidden');
   generateTimeAPattern();
   generateFBRandoms();
   updateAudio();
